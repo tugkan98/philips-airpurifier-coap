@@ -59,6 +59,35 @@ Note: `configuration.yaml` is no longer supported and your configuration is not 
 
 ## Supported models
 
+### AMF870 and AC3420 controls and recovery
+
+- AMF870 display brightness reads and writes `D0312F`. The existing light unique
+  ID is retained; `D0312D` may echo a command without changing the physical display.
+- AMF870 gas readings are the categories `L1`–`L4`, without a liters unit or a
+  numeric measurement state class. The sensor unique ID is retained.
+- On AMF870, Function, Target temperature and Oscillation appear under Controls;
+  Auto plus and Standby sensors are Configuration entities. Timer remains under
+  Configuration.
+- AC3420 provides a Target humidity number (40–70%, steps of 10) which writes
+  only the humidity target. Its fan continues to control power and speed, and
+  its humidity sensor reports the current measurement. The existing humidifier
+  entity remains available for existing automations, but is disabled by default
+  on new installations to avoid presenting a second control for the same power.
+
+For configured AMF870 and AC3420 devices, a subscription that does not deliver an
+initial status within two seconds gets one recovery attempt: temporarily disable
+the beep setting, then restore its last confirmed value. An already muted device
+stays muted. Recovery never sends power or display-brightness commands. The last
+confirmed beep setting is stored per config entry and retained across restarts;
+if none is known, no recovery command is sent. A setting changed on the device
+while disconnected may be newer than this saved value. Recovery cannot help when
+the device is unreachable and does not apply to other models or initial discovery.
+
+English remains the source language, with a Turkish translation included. Custom
+Philips icon names begin with `pap:`, such as `pap:nanoprotect_filter` and
+`pap:prefilter_cleaning`; these names can be entered directly in an entity's icon
+field. Existing user-specified entity names and icons are not overwritten.
+
 Note: Some of these models seem to have a newer firmware that does not allow local connections anymore. If you buy the device with the intention to manage it via Home Assistant, make sure you can return it, if the integration doesn't work for you.
 
 - AC0850/11 AWS_Philips_AIR
