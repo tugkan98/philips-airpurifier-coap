@@ -83,8 +83,7 @@ if none is known, no recovery command is sent. A setting changed on the device
 while disconnected may be newer than this saved value. Recovery cannot help when
 the device is unreachable and does not apply to other models or initial discovery.
 
-English remains the source language, with a Turkish translation included. Custom
-Philips icon names begin with `pap:`, such as `pap:nanoprotect_filter` and
+Custom Philips icon names begin with `pap:`, such as `pap:nanoprotect_filter` and
 `pap:prefilter_cleaning`; these names can be entered directly in an entity's icon
 field. Existing user-specified entity names and icons are not overwritten.
 
