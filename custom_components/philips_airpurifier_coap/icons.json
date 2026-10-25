@@ -20,7 +20,7 @@
               "sleep_allergy": "pap:sleep_mode",
               "turbo": "pap:speed_3",
               "medium": "pap:speed_2",
-              "gas": "pap:gas",
+              "gas": "mdi:molecule",
               "pollution": "pap:pollution_mode",
               "low": "pap:speed_1",
               "high": "pap:speed_3",

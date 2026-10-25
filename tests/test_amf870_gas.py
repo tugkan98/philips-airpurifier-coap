@@ -60,3 +60,5 @@ def test_gas_level_translation_and_icon_keys():
             continue
         assert "gas_level" in entity["sensor"]
         assert "gas_level" in entity["select"]["preferred_index"]["state"]
+    icons = json.loads((root / "icons.json").read_text(encoding="utf-8"))
+    assert icons["entity"]["fan"]["pap"]["state_attributes"]["preset_mode"]["state"]["gas"] == "mdi:molecule"
